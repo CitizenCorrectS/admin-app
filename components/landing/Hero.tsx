@@ -46,8 +46,8 @@ const Hero = () => {
         {/* Radial gradient for the container to give a faded look */}
         <div
           // chnage the bg to bg-black-100, so it matches the bg color and will blend in
-          className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black-100
-         bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"
+          className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black
+         bg-black-100 [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"
         />
       </div>
 
@@ -96,7 +96,7 @@ const Hero = () => {
       </div>
       <div className="flex flex-col gap-4 justify-center items-center">
             {/* <SliderCarousel /> */}
-            <div className="relative flex items-center justify-center bg-none ">
+            <div className="relative flex items-center justify-center">
              <div className="relative group">
              <a href="#about">
                <button
@@ -116,9 +116,9 @@ const Hero = () => {
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        clip-rule="evenodd"
+                        clipRule="evenodd"
                         d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z"
-                        fill-rule="evenodd"
+                        fillRule="evenodd"
                       ></path>
                     </svg>
                   </div>

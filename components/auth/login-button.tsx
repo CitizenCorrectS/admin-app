@@ -14,7 +14,7 @@ import { Button } from "@/components/ui/button"
 import { LoginForm } from "./login-form";
 
 interface LoginButtonProps {
-    children: React.ReactNode;k
+    children: React.ReactNode;
     mode?: "modal" | "redirect",
     asChild?: boolean;
 };
@@ -39,15 +39,15 @@ export const LoginButton = ({
             {children}
           </span>
         </DialogTrigger>
-        <DialogContent className="sm:max-w-[425px] flex flex-col justify-center items-center">
+        <DialogContent className="sm:max-w-[420px] flex flex-col justify-center items-center">
           {/* <DialogHeader>
             <DialogTitle>Login</DialogTitle>
             <DialogDescription>
               Sign in to your account to continue
             </DialogDescription>
           </DialogHeader> */}
-          <div className="grid gap-4 py-4">
-            {/* <form className="space-y-4">
+         {/* <div className="grid gap-4 py-4">
+             <form className="space-y-4">
               <div>
                 <Label htmlFor="email">Email</Label>
                 <Input id="email" type="email" />
@@ -59,9 +59,9 @@ export const LoginButton = ({
               <Button type="submit" className="w-full">
                 Sign In
               </Button>
-            </form> */}
+            </form> 
+          </div>*/}
             <LoginForm />
-          </div>
         </DialogContent>
       </Dialog>
     );
