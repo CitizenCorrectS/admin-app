@@ -19,7 +19,7 @@ import { useSlider } from "./ui/SliderContext";
 import Sunray from './three/Sunray';
 
 
-const RADIUS = 50;
+const RADIUS = 100;
 const night = new Color('#00008B');
 const day = new Color('orange');
 

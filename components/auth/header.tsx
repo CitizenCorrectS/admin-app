@@ -15,7 +15,7 @@ export const Header = ({label}: HeaderProps) => {
     return(
         <div className="w-full flex flex-col gap-y-4 items-center justify-center">
             <h1 className={cn("text-3xl font-semibold", poppins.className)}>
-                Citien Corrects
+                Citizen Corrects
             </h1>
             <p className="text-sm text-muted-foreground">
                 {label}
