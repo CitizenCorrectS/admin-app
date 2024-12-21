@@ -8,17 +8,55 @@ import Lottie from "react-lottie";
 import { cn } from "@/lib/utils";
 
 
-import { BackgroundGradientAnimation } from "./GradientBg";
-import GridGlobe from "./GridGlobe";
+import { BackgroundGradientAnimation } from "@/components/landing/ui/GradientBg";
+import GridGlobe from "@/components/landing/ui/GridGlobe";
 import animationData from "@/data/confetti.json";
-import MagicButton from "../MagicButton";
-import Earth from "@/components/three/Earth";
-import Cube from "@/components/three/Cube";
-import Tree from "@/components/three/Tree";
-import ClientCanvas from "@/components/canvas/client-canvas";
-import { CanvasContainer } from "@/components/canvas/canvas-container";
+import MagicButton from "@/components/landing/MagicButton";
+import { TrendingUp } from "lucide-react"
+import { Area, AreaChart, CartesianGrid, XAxis } from "recharts"
 
-export const BentoGrid = ({
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+import {
+  ChartConfig,
+  ChartContainer,
+  ChartLegend,
+  ChartLegendContent,
+  ChartTooltip,
+  ChartTooltipContent,
+} from "@/components/ui/chart"
+
+const chartData = [
+  { month: "June", desktop: 63.30, mobile: 33.42, other: 1.2 },
+  { month: "July", desktop: 63.10, mobile: 33.12, other: 1.3 },
+  { month: "August", desktop: 62.30, mobile: 30.42, other: 1.4 },
+  { month: "September", desktop: 61.40, mobile: 29.42, other: 1.5 },
+  { month: "October", desktop: 63.20, mobile: 30.40, other: 1.6 },
+  { month: "November", desktop: 62.70, mobile: 31.32, other: 1.5 },
+]
+
+const chartConfig = {
+  desktop: {
+    label: "EU",
+    color: "hsl(var(--chart-1))",
+  },
+  mobile: {
+    label: "UK",
+    color: "hsl(var(--chart-2))",
+  },
+  other: {
+    label: "INR",
+    color: "hsl(var(--chart-3))",
+  },
+} satisfies ChartConfig
+
+export const UserGrid = ({
   className,
   children,
 }: {
@@ -38,7 +76,7 @@ export const BentoGrid = ({
   );
 };
 
-export const BentoGridItem = ({
+export const UserGridItem = ({
   className,
   id,
   title,
@@ -58,8 +96,8 @@ export const BentoGridItem = ({
   titleClassName?: string;
   spareImg?: string;
 }) => {
-  const leftLists = ["ReactJS", "Express", "Typescript"];
-  const rightLists = ["VueJS", "NuxtJS", "GraphQL"];
+    const leftLists = ["Trade", "Carbon", "Credits"];
+    const rightLists = ["Solar", "Wind", "Biomass"];
 
   const [copied, setCopied] = useState(false);
 
@@ -95,15 +133,76 @@ export const BentoGridItem = ({
       {/* Add SliderCarousel for id:1 */}
       {id === 1 && (
         <div className="relative inset-0 flex flex-col items-center justify-center gap-4 z-20">
-          
-          <CanvasContainer className="bg-[#000319]">
-            <ClientCanvas>
-              <Cube />
-              {/* <Tree /> */}
-            </ClientCanvas>
-          </CanvasContainer>
-          {/* <GridGlobe /> */}
-                  
+            <Card className="w-[95%] h-[100%] mt-2 bg-[#1d2031]">
+            <CardHeader>
+                <CardTitle>Carbon rate 💹</CardTitle>
+                <CardDescription>
+                1 Carbon Credit (CCT) is worth 
+                </CardDescription>
+            </CardHeader>
+            <CardContent>
+                <ChartContainer config={chartConfig}>
+                <AreaChart
+                    accessibilityLayer
+                    data={chartData}
+                    margin={{
+                    left: 12,
+                    right: 12,
+                    }}
+                >
+                    <CartesianGrid vertical={false} />
+                    <XAxis
+                    dataKey="month"
+                    tickLine={false}
+                    axisLine={false}
+                    tickMargin={8}
+                    tickFormatter={(value) => value.slice(0, 3)}
+                    />
+                    <ChartTooltip
+                    cursor={false}
+                    content={<ChartTooltipContent indicator="line" />}
+                    />
+                    <Area
+                    dataKey="other"
+                    type="natural"
+                    fill="var(--color-other)"
+                    fillOpacity={0.4}
+                    stroke="var(--color-other)"
+                    stackId="a"
+                    />
+                    <Area
+                    dataKey="desktop"
+                    type="natural"
+                    fill="var(--color-desktop)"
+                    fillOpacity={0.4}
+                    stroke="var(--color-desktop)"
+                    stackId="a"
+                    />
+                    <Area
+                    dataKey="mobile"
+                    type="natural"
+                    fill="var(--color-mobile)"
+                    fillOpacity={0.4}
+                    stroke="var(--color-mobile)"
+                    stackId="a"
+                    />
+                    <ChartLegend content={<ChartLegendContent />} />
+                </AreaChart>
+                </ChartContainer>
+            </CardContent>
+            <CardFooter>
+                <div className="flex w-full items-start gap-2 text-sm">
+                <div className="grid gap-2">
+                    <div className="flex items-center gap-2 font-medium leading-none">
+                    Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
+                    </div>
+                    <div className="flex items-center gap-2 leading-none text-muted-foreground">
+                    January - June 2024
+                    </div>
+                </div>
+                </div>
+            </CardFooter>
+            </Card>
         </div>
       )}
 
@@ -158,7 +257,16 @@ export const BentoGridItem = ({
 
           {/* for the github 3d globe */}
           {/* {id === 2 && <GridGlobe />} */}
-          {id === 2 && <SliderCarousel />}
+          {id === 2 && 
+            <div className="w-full h-full flex flex-col gap-y-2 items-center justify-center">
+                {/* <div className="h-2">asd</div>
+                <div className="h-2">asd</div>
+                <div className="h-2">asd</div> */}
+                <h1 className="text-3xl font-bold text-left">INR <span className="text-2xl font-light">132</span></h1>
+                <h1 className="text-3xl font-bold text-left">EUR <span className="text-2xl font-light">63</span></h1>
+                <h1 className="text-3xl font-bold text-left">USD <span className="text-2xl font-light">141</span></h1>
+                
+            </div>}
 
           {/* Tech stack list div */}
           {id === 3 && (

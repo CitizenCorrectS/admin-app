@@ -12,9 +12,7 @@ export const login = async (values: z.infer<typeof LoginSchema>) => {
     const validatedFields = LoginSchema.safeParse(values);
 
     if (!validatedFields.success) {
-        return {
-            error: "Error validating fields",
-        };
+        return { error: "Error validating fields" };
     }
 
     const { email, password } = validatedFields.data;
@@ -22,10 +20,10 @@ export const login = async (values: z.infer<typeof LoginSchema>) => {
     const existingUser = await getUserByEmail(email);
 
     if (!existingUser || !existingUser.email || !existingUser.password) {
-        return { error: "Email does not exist"}
+        return { error: "Email does not exist" }
     }
 
-    if(!existingUser.emailVerified) {
+    if (!existingUser.emailVerified) {
         const verificationToken = await generateVerificationToken(
             existingUser.email,
         );
@@ -35,29 +33,26 @@ export const login = async (values: z.infer<typeof LoginSchema>) => {
             verificationToken.token,
         );
 
-        return { success: "Confirmation email sent!"}
+        return { success: "Confirmation email sent!" }
     }
 
     try {
-        await signIn("credentials", { 
-            email, 
+        const redirectUrl = existingUser.role === "ADMIN" ? "/dashboard" : "/home";
+
+        await signIn("credentials", {
+            email,
             password,
-            redirectTo: DEFAULT_LOGIN_REDIRECT,
+            redirectTo: redirectUrl,
         });
     } catch (error) {
-        if( error instanceof AuthError) {
+        if (error instanceof AuthError) {
             switch (error.type) {
                 case "CredentialsSignin":
-                    return {
-                        error: "Invalid credentials",
-                    };
+                    return { error: "Invalid credentials" };
                 default:
-                    return {
-                        error: "Something went wrong",
-                    };
+                    return { error: "Something went wrong" };
             }
         }
-
         throw error;
     }
 };

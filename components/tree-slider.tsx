@@ -109,7 +109,7 @@ export const TreeSlider = ({
     <div>
     <div className="relative w-full">      
     <div className="flex items-center justify-evenly gap-4 mb-8">
-        <div className="bg-green-950 p-4 rounded-lg">
+        <div className="bg-white/10 border border-white/10 backdrop-blur-lg p-4 rounded-lg">
             <div className="flex flex-col items-center gap-2">
                 <div className="flex flex-row items-center justify-between gap-2">
                 {getIconAndDescription(icon).icon}
@@ -120,11 +120,14 @@ export const TreeSlider = ({
                 </div>
             </div>
         </div>
-        <div className="bg-green-950 p-4 rounded-lg">
+        <div className="bg-white/10 border border-white/10 backdrop-blur-lg p-4 rounded-lg">
             <div className="flex flex-col items-center gap-2">
                 <div className="flex flex-row items-center justify-between gap-2">
                     <BadgeIndianRupee className="w-10 h-10 text-gray-100" />
-                    <p className="text-2xl text-white font-bold">{estimatedCredits.toFixed(0)}</p>
+                    {/* <p className="text-2xl text-white font-bold">{estimatedCredits.toFixed(0)}</p> */}
+                    <p className="text-2xl text-white font-bold">
+                      {Math.round(estimatedCredits).toLocaleString('en-IN')}
+                    </p>
                 </div>
                 <div className="flex flex-row text-center items-center gap-2 w-[140px]">
                     <p className="text-gray-100 w-full">Estimated Value</p>
@@ -139,12 +142,12 @@ export const TreeSlider = ({
         onTouchStart={handleTouchStart}
     >
         <div 
-            className="absolute h-full bg-green-600 rounded-full"
+            className="absolute h-full bg-[#12208b] rounded-full"
             style={{ width: `${(hectares / maxSlider) * 100}%` }}
         />
             <button
                 style={{ left: `${(hectares / maxSlider) * 100}%` }}
-                className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-10 h-10 z-[4] rounded-full bg-green-600 bg-clip-padding backdrop-filter border-2 border-gray-100 text-gray-100 drop-shadow-lg flex items-center justify-center hover:bg-green-600 hover:scale-105 transition-all duration-300"
+                className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-10 h-10 z-[4] rounded-full bg-[#09135a] bg-clip-padding backdrop-filter border-2 border-gray-100 text-gray-100 drop-shadow-lg flex items-center justify-center hover:bg-[#12208b] hover:scale-105 transition-all duration-300"
             >
                 <svg
                 clipRule="evenodd"

@@ -7,9 +7,9 @@ import { DEFAULT_LOGIN_REDIRECT } from "@/route";
 
 export const Social = () => {
 
-    const onClick = (provider: "google" | "facebook") => {
-        signIn(provider,{
-            callbackUrl: DEFAULT_LOGIN_REDIRECT,
+    const onClick = async (provider: "google" | "facebook") => {
+        await signIn(provider, {
+            callbackUrl: "/auth/callback"
         });
     }
     return(

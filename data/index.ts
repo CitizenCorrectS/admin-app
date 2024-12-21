@@ -13,7 +13,7 @@ export const gridItems = [
     className: "lg:col-span-3 md:col-span-6 md:row-span-4 lg:min-h-[60vh]",
     imgClassName: "w-full h-full",
     titleClassName: "justify-end",
-    img: "/b1.svg",
+    img: "",
     spareImg: "",
   },
   {
@@ -38,13 +38,13 @@ export const gridItems = [
   },
   {
     id: 4,
-    title: "Environmental enthusiast with a passion for sustainability.",
+    title: "Trade your carbon credits all around the globe 🌍",
     description: "",
     className: "lg:col-span-2 md:col-span-3 md:row-span-1",
-    imgClassName: "",
+    imgClassName: "opacity-40",
     titleClassName: "justify-start",
-    img: "/grid.svg",
-    spareImg: "/b4.svg",
+    img: "/coins.jpg",
+    spareImg: "",
   },
 
   {

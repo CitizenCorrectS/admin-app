@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { TreeSlider } from "@/components/tree-slider";
 import { cn } from "@/lib/utils";
+import RangeSlider from "./ui/range-slider";
 
 interface SlideProps {
   title: string;
@@ -52,25 +53,47 @@ export const SliderCarousel = () => {
  
   return (
     <>
-    <div className="absolute top-[60%] left-1/2 -translate-y-1/2 -translate-x-1/2 flex items-center justify-center w-[400px] h-[100px] text-white z-[11] opacity-90 rounded-xl inset-0.5">
+    
+    <div className="absolute top-[35%] left-1/2 -translate-y-1/2 -translate-x-1/2 flex items-center justify-center w-[355px] h-[100px] text-white z-[20] rounded-xl inset-0.5">
         <button 
           onClick={prevSlide}
-          className="left-4 z-10 p-2 rounded-full bg-black/20 hover:bg-black/40 transition-colors"
+          className="absolute left-0 z-10 p-2 rounded-full bg-black/40 hover:bg-black/60 transition-colors"
         >
           <ChevronLeft className="w-6 h-6" />
         </button>
         
         <button 
           onClick={nextSlide}
-          className="right-4 z-10 p-2 rounded-full bg-black/20 hover:bg-black/40 transition-colors"
+          className="absolute right-0 z-10 p-2 rounded-full bg-black/40 hover:bg-black/60 transition-colors"
         >
           <ChevronRight className="w-6 h-6" />
         </button>
     </div>
-    <div className="relative drop-shadow-xl w-[380px] h-[275px] overflow-hidden rounded-xl bg-[#2d2c2d] z-[10] bg-opacity-30">
-      <div className="relative flex items-center justify-center text-white z-[2] rounded-xl inset-0.5 bg-green-950 bg-opacity-40">
-        
 
+
+
+            {/* <h2 className="text-xl">{slides[currentSlide].title}</h2> */}
+            {/* <p className="text-md text-gray-400 text-center">{slides[currentSlide].description}</p> */}
+     <div className="relative drop-shadow-xl w-[355px] h-[270px] overflow-hidden rounded-xl bg-[#100943] z-[10] mt-2 bg-opacity-0">
+    {/*  <div className="relative flex items-center justify-center text-white z-[2] rounded-xl inset-0.5 bg-green-950 bg-opacity-0">
+        <div className="flex flex-col items-center justify-between max-w-[400px] w-full rounded-3xl p-4">
+          <div className="flex flex-col gap-4 items-center">
+            <div className="flex-col flex py-4 gap-2.5">
+              {slides[currentSlide].component}
+            </div>
+            <p className="text-md text-gray-400 text-center">
+              {slides[currentSlide].title}
+            </p>
+          </div>
+        </div>
+      </div> */}
+
+<div
+      className="relative drop-shadow-xl w-[355px] h-[275px] overflow-hidden rounded-xl bg-[#1d1064]"
+    >
+      <div
+        className="absolute flex items-center justify-center text-white z-[1] opacity-90 rounded-xl inset-0.5 bg-[#040a35]"
+      >
         <div className="flex flex-col items-center justify-between max-w-[400px] w-full rounded-3xl p-4">
           <div className="flex flex-col gap-4 items-center">
             {/* <h2 className="text-xl">{slides[currentSlide].title}</h2> */}
@@ -86,6 +109,8 @@ export const SliderCarousel = () => {
           </div>
         </div>
       </div>
+      <div className="absolute w-56 h-48 bg-white blur-[50px] -left-1/2 -top-1/2"></div>
+    </div>
       
       <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-2">
         {slides.map((_, index) => (
@@ -100,7 +125,7 @@ export const SliderCarousel = () => {
         ))}
       </div>
       
-      <div className="absolute w-full h-full bg-white bg-opacity-20 blur-[100px] -left-1/2 -top-1/2" />
+      <div className="absolute w-full h-full bg-blue-700 bg-opacity-20 blur-[100px] -left-1/2 -top-1/2" />
     </div>
     </>
   );

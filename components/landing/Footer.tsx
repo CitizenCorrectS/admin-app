@@ -1,8 +1,10 @@
+"use client";
 import { FaLocationArrow } from "react-icons/fa6";
 
 import { socialMedia } from "@/data";
 import MagicButton from "./MagicButton";
 import Image from "next/image";
+import NewsLetter from "../ui/news-letter";
 
 const Footer = () => {
   return (
@@ -23,16 +25,17 @@ const Footer = () => {
           Ready to take <span className="text-green-500">invest</span> in
           the future of sustainability?
         </h1>
-        <p className="text-white-200 md:mt-10 my-5 text-center">
+        <p className="text-gray-500 dark:text-white-200 md:mt-10 my-5 text-center">
           Reach out & let&apos;s discuss how to grow carbon credits.
         </p>
-        <a href="mailto:citizencorrects@gmail.com">
+        <NewsLetter />
+        {/* <a href="mailto:citizencorrects@gmail.com">
           <MagicButton
             title="Let's get in touch"
             icon={<FaLocationArrow />}
             position="right"
           />
-        </a>
+        </a> */}
       </div>
       <div className="flex mt-16 md:flex-row flex-col justify-between items-center">
         <p className="md:text-base text-sm md:font-normal font-light">

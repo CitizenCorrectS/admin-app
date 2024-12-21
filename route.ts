@@ -1,5 +1,6 @@
 // Public routes
 import { NextResponse } from 'next/server'
+import { auth } from "./auth";
 
 export async function GET() {
   try {
@@ -32,4 +33,10 @@ export const authRoutes = [
 
 export const apiAuthPrefix = "/api/auth";
 
-export const DEFAULT_LOGIN_REDIRECT = "/dashboard";
+export const DEFAULT_LOGIN_REDIRECT = async () => {
+    const session = await auth();
+    if (session?.user?.role === "ADMIN") {
+        return "/dashboard";
+    }
+    return "/home";
+};

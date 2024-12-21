@@ -2,6 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
+import { TypewriterNumber } from "./TypewriterNumber";
 
 const World = dynamic(() => import("./Globe").then((m) => m.World), {
   ssr: false,
@@ -432,4 +433,22 @@ const GridGlobe = () => {
     </div>
   );
 };
+// return (
+// <div className="flex items-center justify-center absolute -left-5 top-36 md:top-40 w-full h-full">
+//     <div className="max-w-7xl mx-auto w-full relative overflow-hidden h-96 px-4">
+//       <div className="absolute top-0 left-0 z-50 flex items-center gap-4 px-6">
+//         <h2 className="text-2xl font-bold text-white">Global Carbon Market</h2>
+//         <TypewriterNumber  
+//           endNumber={132} 
+//           className="text-2xl font-bold text-emerald-400"
+//         />
+//       </div>
+//       <div className="absolute w-full h-72 md:h-full z-10">
+//         <World data={sampleArcs} globeConfig={globeConfig} />
+//       </div>
+//     </div>
+//   </div>
+//   );
+// }
+
 export default GridGlobe;

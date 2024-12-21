@@ -1,13 +1,13 @@
 "use client";
 import { gridItems } from "@/data";
-import { BentoGrid, BentoGridItem } from "./ui/BentoGrid";
+import { UserGrid, UserGridItem } from "./UserGrid";
 
-const Grid = () => {
+const Ugrid = () => {
   return (
     <section id="about">
-      <BentoGrid className="w-full pt-10 pb-2">
+      <UserGrid className="w-full pt-10 pb-2">
         {gridItems.map((item, i) => (
-          <BentoGridItem
+          <UserGridItem
             id={item.id}
             key={i}
             title={item.title}
@@ -21,9 +21,9 @@ const Grid = () => {
             spareImg={item.spareImg}
           />
         ))}
-      </BentoGrid>
+      </UserGrid>
     </section>
   );
 };
 
-export default Grid;
+export default Ugrid;

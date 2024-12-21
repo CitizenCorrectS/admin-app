@@ -33,9 +33,6 @@ export const {
 
             if (!existingUser?.emailVerified) return false;
 
-
-            // TODO: Add 2FA
-            ////////////////////////////////////////////////////
             return true;
         },  
         async session({token, session}) {
@@ -45,6 +42,12 @@ export const {
 
             if (token.role && session.user) {
                 session.user.role = token.role as UserRole;
+            }
+
+            if (session.user) {
+                session.user.defaultRedirect = session.user.role === "ADMIN" 
+                    ? "/dashboard" 
+                    : "/home";
             }
 
             return session;
