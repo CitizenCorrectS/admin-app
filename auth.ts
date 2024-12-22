@@ -3,6 +3,8 @@ import { UserRole } from "@prisma/client";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { db } from "@/lib/db";
 import authConfig from "./auth.config";
+import { getTwoFactorConfirmationByUserId } from "./data/two-factor-confirmation";
+import { getAccountByUserId } from "@/data/account";
 import { getUserById } from "@/data/user";
 
 
@@ -12,6 +14,7 @@ export const {
     auth,
     signIn,
     signOut,
+    update,
 } = NextAuth({
     pages: {
         signIn: "/auth/login",
@@ -31,10 +34,26 @@ export const {
 
             const existingUser = await getUserById(user.id);
 
+            //Prevent sign in without email verification
             if (!existingUser?.emailVerified) return false;
 
+            //2FA check
+            if (existingUser.isTwoFactorEnabled) {
+                const twoFactorConfirmation = await getTwoFactorConfirmationByUserId(
+                existingUser.id
+                );
+
+                if (!twoFactorConfirmation) return false;
+
+                //Delete the two factor confirmation for next sign in
+                await db.twoFactorConfirmation.delete({
+                where: { id: twoFactorConfirmation.id },
+                });
+            }
+
             return true;
-        },  
+        },
+
         async session({token, session}) {
             if (token.sub && session.user) {
                 session.user.id = token.sub;
@@ -45,7 +64,7 @@ export const {
             }
 
             if (session.user) {
-                session.user.defaultRedirect = session.user.role === "ADMIN" 
+               session.user.defaultRedirect = session.user.role === "ADMIN" 
                     ? "/dashboard" 
                     : "/home";
             }
@@ -59,7 +78,14 @@ export const {
 
             if (!existingUser) return token;
 
+            const existingAccount = await getAccountByUserId(existingUser.id);
+
+            token.isOAuth = !!existingAccount;
+            token.name = existingUser.name;
+            token.email = existingUser.email;
             token.role = existingUser.role;
+            token.isTwoFactorEnabled = existingUser.isTwoFactorEnabled;
+            
             return token;
         }
     },

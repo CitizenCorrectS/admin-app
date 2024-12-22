@@ -74,7 +74,7 @@ export const SliderCarousel = () => {
 
             {/* <h2 className="text-xl">{slides[currentSlide].title}</h2> */}
             {/* <p className="text-md text-gray-400 text-center">{slides[currentSlide].description}</p> */}
-     <div className="relative drop-shadow-xl w-[355px] h-[270px] overflow-hidden rounded-xl bg-[#100943] z-[10] mt-2 bg-opacity-0">
+     <div className="relative drop-shadow-xl w-[355px] h-[270px] overflow-hidden rounded-xl bg-[#100943] z-[10] mt-2 ml-7 bg-opacity-0">
     {/*  <div className="relative flex items-center justify-center text-white z-[2] rounded-xl inset-0.5 bg-green-950 bg-opacity-0">
         <div className="flex flex-col items-center justify-between max-w-[400px] w-full rounded-3xl p-4">
           <div className="flex flex-col gap-4 items-center">

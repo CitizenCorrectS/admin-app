@@ -13,22 +13,22 @@ export const Social = () => {
         });
     }
     return(
-        <div className="flex flex-col items-center w-full gap-2">
+        <div className="flex flex-col items-center w-full gap-2 text-neutral-500">
             <Button
             size="lg"
-            className="w-full"
+            className="w-full bg-neutral-50 text-neutral-800"
             variant="outline"
             onClick={() => onClick("google")}
             >
-              Sign in with Google<FcGoogle className="w-5 h-5"/>  
+            <FcGoogle className="w-5 h-5"/>Sign in with Google
             </Button>
             <Button
             size="lg"
             className="w-full"
-            variant="outline"
+            variant="secondary"
             onClick={() => onClick("facebook")}
             >
-              Sign in with Facebook<FaFacebook className="w-5 h-5"/>  
+              <FaFacebook className="w-5 h-5"/>Sign in with Facebook  
             </Button>
         </div>
     );

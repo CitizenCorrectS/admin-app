@@ -31,12 +31,19 @@ export default auth((req) => {
     }
 
     if (!isLoggedIn && !isPublicRoute) {
-        return Response.redirect(new URL("/auth/login", nextUrl));
+        let callbackUrl = nextUrl.pathname;
+        if (nextUrl.search) {
+            callbackUrl += nextUrl.search;
+        }
+        const encodedCallbackUrl = encodeURIComponent(callbackUrl);;
+
+        return Response.redirect(new URL(
+            `/auth/login?callbackUrl${encodedCallbackUrl}`, nextUrl));
     }
 
     // Role-based routing
     if (isDashboardRoute && user?.role !== "ADMIN") {
-        return Response.redirect(new URL("/client", nextUrl));
+        return Response.redirect(new URL("/home", nextUrl));
     }
 
     return null;

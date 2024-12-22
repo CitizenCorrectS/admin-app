@@ -35,8 +35,8 @@ const poppins = Poppins({
 
 export const navItems = [
   { name: "Home", link: "/" },
-  { name: "Projects", link: "#projects" },
-  { name: "Settings", link: "/settings" },
+  { name: "Grow", link: "#about" },
+  { name: "Subscribe", link: "#contact" },
 ];
 
 

@@ -13,6 +13,7 @@ import Cube from "../three/Cube";
 import Tree from "../three/Tree";
 import Trees from "../three/Trees";
 import TreesAni from "../three/TreesAni";
+// import { SliderCarousel } from "../slider-carousel";
 
 const Hero = () => {
   const [sliderValue, setSliderValue] = useState(0);
@@ -98,6 +99,8 @@ const Hero = () => {
               </button>
               </a>
           </div>
+          
+
               {/* <RangeSlider /> */}
               {/* <input
                 type="range"
@@ -106,9 +109,9 @@ const Hero = () => {
                 value={sliderValue}
                 onChange={(e) => setSliderValue(Number(e.target.value))}
               /> */}
-              <CanvasContainer className="bg-[#000319]">
+              {/* <CanvasContainer className="bg-[#000319]">
                   <TreesAni />
-                  </CanvasContainer>
+                  </CanvasContainer> */}
               {/* <CanvasContainer className="bg-[#000319]">
                   <ClientCanvas>
                   </ClientCanvas>

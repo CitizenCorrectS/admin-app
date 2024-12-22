@@ -17,6 +17,7 @@ import Cube from "@/components/three/Cube";
 import Tree from "@/components/three/Tree";
 import ClientCanvas from "@/components/canvas/client-canvas";
 import { CanvasContainer } from "@/components/canvas/canvas-container";
+import CodeText from "./CodeText";
 
 export const BentoGrid = ({
   className,
@@ -58,8 +59,8 @@ export const BentoGridItem = ({
   titleClassName?: string;
   spareImg?: string;
 }) => {
-  const leftLists = ["ReactJS", "Express", "Typescript"];
-  const rightLists = ["VueJS", "NuxtJS", "GraphQL"];
+  const leftLists = ["biomass", "wind", "solar"];
+  const rightLists = ["trade", "carbon", "credits"];
 
   const [copied, setCopied] = useState(false);
 
@@ -96,12 +97,11 @@ export const BentoGridItem = ({
       {id === 1 && (
         <div className="relative inset-0 flex flex-col items-center justify-center gap-4 z-20">
           
-          <CanvasContainer className="bg-[#000319]">
+          {/* <CanvasContainer className="bg-[#000319]">
             <ClientCanvas>
               <Cube />
-              {/* <Tree /> */}
             </ClientCanvas>
-          </CanvasContainer>
+          </CanvasContainer> */}
           {/* <GridGlobe /> */}
                   
         </div>
@@ -156,6 +156,7 @@ export const BentoGridItem = ({
             {title}
           </div>
 
+
           {/* for the github 3d globe */}
           {/* {id === 2 && <GridGlobe />} */}
           {id === 2 && <SliderCarousel />}
@@ -197,6 +198,12 @@ export const BentoGridItem = ({
                   </div>
                 )}
 
+
+          {/* {id === 5 && (
+                            <div className="relative inset-0 flex flex-col items-center justify-center gap-4 z-20">
+                              <CodeText />
+                            </div>
+                          )} */}
 
 
           {id === 6 && (

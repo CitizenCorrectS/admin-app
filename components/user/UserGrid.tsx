@@ -96,8 +96,8 @@ export const UserGridItem = ({
   titleClassName?: string;
   spareImg?: string;
 }) => {
-    const leftLists = ["Trade", "Carbon", "Credits"];
-    const rightLists = ["Solar", "Wind", "Biomass"];
+    const leftLists = ["INR", "EUR", "USD"];
+    const rightLists = ["₹132", "€63", "$141"];
 
   const [copied, setCopied] = useState(false);
 
@@ -262,10 +262,7 @@ export const UserGridItem = ({
                 {/* <div className="h-2">asd</div>
                 <div className="h-2">asd</div>
                 <div className="h-2">asd</div> */}
-                <h1 className="text-3xl font-bold text-left">INR <span className="text-2xl font-light">132</span></h1>
-                <h1 className="text-3xl font-bold text-left">EUR <span className="text-2xl font-light">63</span></h1>
-                <h1 className="text-3xl font-bold text-left">USD <span className="text-2xl font-light">141</span></h1>
-                
+                <h1 className="text-3xl font-bold text-left">Trade your carbon credits.<span className="text-2xl text-muted-foreground font-light"><br/> coming soon!</span></h1>                
             </div>}
 
           {/* Tech stack list div */}

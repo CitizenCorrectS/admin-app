@@ -39,28 +39,7 @@ export const LoginButton = ({
             {children}
           </span>
         </DialogTrigger>
-        <DialogContent className="sm:max-w-[420px] flex flex-col justify-center items-center">
-          {/* <DialogHeader>
-            <DialogTitle>Login</DialogTitle>
-            <DialogDescription>
-              Sign in to your account to continue
-            </DialogDescription>
-          </DialogHeader> */}
-         {/* <div className="grid gap-4 py-4">
-             <form className="space-y-4">
-              <div>
-                <Label htmlFor="email">Email</Label>
-                <Input id="email" type="email" />
-              </div>
-              <div>
-                <Label htmlFor="password">Password</Label>
-                <Input id="password" type="password" />
-              </div>
-              <Button type="submit" className="w-full">
-                Sign In
-              </Button>
-            </form> 
-          </div>*/}
+        <DialogContent className="p-0 w-auto bg-transparent border-none">
             <LoginForm />
         </DialogContent>
       </Dialog>

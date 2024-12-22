@@ -16,6 +16,7 @@ import { login } from "@/actions/login";
 
 export const LoginForm = () => {
     const searchParams = useSearchParams();
+    const callbackUrl = searchParams.get("callbackUrl");
     const urlError = searchParams.get("error") === "OAuthAccountNotLinked" 
     ? "Email already in use!"
     : "";
@@ -35,7 +36,7 @@ export const LoginForm = () => {
         setSuccess(""); 
         
         startTransition(() => {
-        login(values)
+        login(values, callbackUrl)
           .then((data) =>{
             setError(data?.error);
             setSuccess(data?.success);
@@ -55,7 +56,7 @@ export const LoginForm = () => {
                   onSubmit={form.handleSubmit(onSubmit)}
                   className="space-y-4"
                 >
-                <div className="space-y-4">
+                <div className="space-y-4 text-neutral-500">
                     <FormField 
                      control={form.control}
                      name="email"
